@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         with(binding){
-            txtNumber.text = number.toString()
-
-            txtNumber.setBackgroundResource(R.color.black)
+//            txtNumber.text = number.toString()
+//
+//            txtNumber.setBackgroundResource(R.color.black)
             val email = "asd"
             val pass = "123"
+
+            btnGetText.setBackgroundResource(R.color.black)
 
             btnGetText.setOnClickListener {
                 val valueText = edtEmail.text.toString()
@@ -31,15 +33,15 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
             }
 
-            btnCount.setOnClickListener{
-                number++
-                txtNumber.text = number.toString()
-            }
-            btnToast.setOnClickListener{
-                Toast.makeText(this@MainActivity,
-                "last count: $number",
-                Toast.LENGTH_SHORT).show()
-            }
+//            btnCount.setOnClickListener{
+//                number++
+//                txtNumber.text = number.toString()
+//            }
+//            btnToast.setOnClickListener{
+//                Toast.makeText(this@MainActivity,
+//                "last count: $number",
+//                Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 }
