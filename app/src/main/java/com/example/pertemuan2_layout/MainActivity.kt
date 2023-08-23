@@ -19,6 +19,17 @@ class MainActivity : AppCompatActivity() {
             txtNumber.text = number.toString()
 
             txtNumber.setBackgroundResource(R.color.black)
+            val email = "asd"
+            val pass = "123"
+
+            btnGetText.setOnClickListener {
+                val valueText = edtEmail.text.toString()
+                //show toast
+                Toast.makeText(
+                    this@MainActivity,
+                    valueText,
+                    Toast.LENGTH_SHORT).show()
+            }
 
             btnCount.setOnClickListener{
                 number++

@@ -43,4 +43,17 @@
         />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        />
+    <Button
+        android:id="@+id/btn_get_text"
+        android:text="Get Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
 </LinearLayout>
