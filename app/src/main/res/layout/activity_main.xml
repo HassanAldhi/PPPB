@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".MainActivity"
     android:padding="16dp"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/txtheader"
@@ -16,48 +16,29 @@
         android:textSize="32sp"
         android:textColor="#000000"
         android:textAlignment="center"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="80dp"
         />
 
-<!--    <LinearLayout-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_toast"-->
-<!--            android:text="@string/toast"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginEnd="4dp"-->
-<!--            />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_count"-->
-<!--            android:text="@string/count"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--        />-->
-<!--    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username : "
-        />
-
-    <EditText
-        android:id="@+id/edt_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username :"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            />
+        <EditText
+            android:id="@+id/username_form"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:hint="Username"
+            android:inputType="textImeMultiLine"
+            android:layout_weight="5"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -67,22 +48,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password : "
+            android:text="Password :"
+            android:textSize="18sp"
+            android:layout_weight="1"
             />
 
         <EditText
-            android:id="@+id/edt_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/pass_form"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_weight="5"
             />
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_get_text"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/black"
-        android:text="Log in" />
+        android:layout_height="56dp"
+        android:layout_marginTop="48dp"
+        android:text="LOGIN"
+        android:backgroundTint="#000000"
+        />
 
 </LinearLayout>

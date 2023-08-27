@@ -6,42 +6,40 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.Toast
 import com.example.pertemuan2_layout.databinding.ActivityMainBinding
-
+// Mendefinisikan kelas utama bernama MainActivity yang diwarisi dari AppCompatActivity
 class MainActivity : AppCompatActivity() {
+    // Mendeklarasikan beberapa variabel dan menginisialisasinya
     private lateinit var binding: ActivityMainBinding
-    private var number = 0
+    private val username = "hassan"
+    private val password = "1234"
 
+    // Metode onCreate dipanggil ketika aktivitas (activity) dibuat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Menghubungkan layout dengan kelas menggunakan View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        with(binding){
-//            txtNumber.text = number.toString()
-//
-//            txtNumber.setBackgroundResource(R.color.black)
-            val email = "asd"
-            val pass = "123"
 
-            btnGetText.setBackgroundResource(R.color.black)
+        // Membuat event listener untuk tombol Login
+        with (binding) {
+            btnLogin.setOnClickListener {
+                var getUsername = usernameForm.text.toString()
+                var getpass = passForm.text.toString()
 
-            btnGetText.setOnClickListener {
-                val valueText = edtEmail.text.toString()
-                //show toast
-                Toast.makeText(
-                    this@MainActivity,
-                    valueText,
-                    Toast.LENGTH_SHORT).show()
+                // Memeriksa apakah username dan password benar
+                if (getUsername.equals(username) && getpass.equals(password)) {
+                    // Menampilkan pesan
+                    Toast.makeText(this@MainActivity,
+                        "Login Sukses!",
+                        Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    // Menampilkan pesan
+                    Toast.makeText(this@MainActivity,
+                        "Username atau password salah",
+                        Toast.LENGTH_SHORT).show()
+                }
             }
-
-//            btnCount.setOnClickListener{
-//                number++
-//                txtNumber.text = number.toString()
-//            }
-//            btnToast.setOnClickListener{
-//                Toast.makeText(this@MainActivity,
-//                "last count: $number",
-//                Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 }
