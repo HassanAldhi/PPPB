@@ -4,4 +4,5 @@
     <string name="_0">0</string>
     <string name="count">COUNT</string>
     <string name="phone_name">Samsung</string>
+    <string name="phone_desc">Versions: SM-S901B, SM-S901B/DS (International); SM-S901U (USA); SM-S901U1 (USA unlocked); SM-S901W (Canada); SM-S901N (Korea); SM-S9010 (China); SM-S901E (Asia/Africa)</string>
 </resources>

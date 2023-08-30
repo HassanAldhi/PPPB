@@ -96,6 +96,7 @@
         android:text="BOOKMARK"
         android:layout_alignParentBottom="true"
         android:paddingVertical="15dp"
+        android:drawableLeft="@drawable/baseline_camera_alt_24"
         />
 
 </RelativeLayout>
