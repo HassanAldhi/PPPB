@@ -48,8 +48,14 @@ class MainActivity : AppCompatActivity() {
                     "+" -> result = oldNumber.toDouble() + newNumber.toDouble()
                     "-" -> result = oldNumber.toDouble() - newNumber.toDouble()
                 }
+                if (result % 1.0 == 0.0) {
+                    var res = result.toInt()
+                    txtMain.text = res.toString()
+                } else {
+                    txtMain.text = result.toString()
+                }
                 txtOpr.text = txtOpr.text.toString() + newNumber.toString()
-                txtMain.text = result.toString()
+
             }
 
             fun clearCal(view: View) {
