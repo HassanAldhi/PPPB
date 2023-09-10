@@ -1,245 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:padding="16dp"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
-    <TextView
-        android:id="@+id/txt_opr"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_above="@id/txt_main"
-        android:textSize="24sp"
-        android:text="."
-        android:gravity="right"
-        android:layout_weight="1"
-        android:inputType="numberDecimal"
-        android:textColor="@color/gray"
+    <include
+        android:id="@+id/top_bar"
+        layout="@layout/top_bar"
         />
+    <include
+        android:id="@+id/bottom_menu"
+        layout="@layout/bottom_menu"
+        />
+
     <TextView
-        android:id="@+id/txt_main"
-        android:layout_width="match_parent"
+        android:id="@+id/txt_balance"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/layout1"
-        android:layout_marginTop="8dp"
-        android:text="0"
-        android:gravity="right"
-        android:layout_marginBottom="16dp"
+        android:text="5,600.00"
         android:textColor="@color/black"
-        android:textSize="48sp" />
-    <LinearLayout
-        android:id="@+id/layout1"
-        android:layout_above="@id/layout2"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/num_7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="7"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_8"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="8"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="9"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_menu"
+        app:layout_constraintTop_toBottomOf="@id/txt_balance"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="-66dp">
 
-        <Button
-            android:id="@+id/opr_clear"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="AC"
-            android:onClick="clearCal"
-            android:textSize="24sp"
-            android:backgroundTint="@color/dark_gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_above="@id/layout3"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/num_4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="4"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="5"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="6"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/opr_divide"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="/"
-            android:onClick="inputOpr"
-            android:textSize="24sp"
-            android:backgroundTint="@color/dark_gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout3"
-        android:layout_above="@id/layout4"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
+            <LinearLayout
+                android:id="@+id/card_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="8dp"
+                android:background="#D5D2F2"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/num_1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/num_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="3"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/opr_multiply"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="*"
-            android:onClick="inputOpr"
-            android:textSize="24sp"
-            android:backgroundTint="@color/dark_gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout4"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/num_0"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="0"
-            android:onClick="inputNumber"
-            android:textSize="24sp"
-            android:backgroundTint="@color/gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/opr_sum"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="+"
-            android:onClick="inputOpr"
-            android:textSize="24sp"
-            android:backgroundTint="@color/dark_gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/opr_minus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="-"
-            android:onClick="inputOpr"
-            android:textSize="24sp"
-            android:backgroundTint="@color/dark_gray"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-        <Button
-            android:id="@+id/result"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="="
-            android:onClick="calResult"
-            android:textSize="24sp"
-            android:backgroundTint="@color/orange"
-            android:layout_weight="1"
-            android:layout_margin="2sp"
-            />
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pay Money"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="To wallet, bank or mobile number" />
+            </LinearLayout>
 
-</RelativeLayout>
+            <LinearLayout
+                android:id="@+id/card_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#E5EFCE"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Request Money"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Request money from Cowry Loans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/card_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="8dp"
+                android:background="#F4F9F4"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pay Bill"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Zero transactions fees when you pay" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/card_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#FCF0C7"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/card_2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Buy airtime"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Top-up or Send airtime across Countries" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
