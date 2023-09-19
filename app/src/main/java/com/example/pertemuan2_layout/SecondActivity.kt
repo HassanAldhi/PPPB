@@ -1,15 +1,15 @@
 package com.example.pertemuan2_layout
 
+import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import com.example.ppb.databinding.ActivityMainBinding
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import com.example.pertemuan2_layout.MainActivity.Companion.EXTRA_NAME
+import com.example.pertemuan2_layout.ThirdActivity.Companion.EXTRA_ADDRESS
+import com.example.pertemuan2_layout.databinding.ActivitySecondBinding
+
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
 
