@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
             btnShowCalender.setOnClickListener{
                 val datePicker = DatePicker()
-                datePicker.show(supportFragmentManager, "date")
+                datePicker.show(supportFragmentManager, "datePicker")
             }
 
             timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
