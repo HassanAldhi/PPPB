@@ -10,44 +10,33 @@
     android:layout_gravity="center"
     >
 
-    <EditText
-        android:id="@+id/inp_name"
+    <Button
+        android:id="@+id/btn_show_calender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
-        android:hint="Masukkan Nama..."
-        android:paddingVertical="15dp"
-        />
+        android:textAllCaps="false"
+        android:text="Show Calendar"/>
 
-    <Button
+    <Spinner
+        android:id="@+id/spinner_provinsi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_to_second"
-        android:text="TAG TO OPEN SECOND PAGE"
-        android:paddingVertical="15dp"
-        android:layout_marginBottom="30dp"
-        />
+        android:layout_height="48dp"/>
 
-    <Button
+    <Spinner
+        android:id="@+id/spinner_country"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <DatePicker
+        android:id="@+id/date_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_send_msg"
-        android:text="TAG TO SEND MESSAGE"
-        android:paddingVertical="15dp"
-        />
-    <Button
+        android:calendarViewShown="false"
+        android:datePickerMode="calendar"/>
+    <TimePicker
+        android:id="@+id/time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_dial"
-        android:text="TAG TO DIAL"
-        android:paddingVertical="15dp"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_open_link"
-        android:text="TAG TO OPEN LINK"
-        android:paddingVertical="15dp"
-        />
+        android:timePickerMode="spinner"/>
 
 </LinearLayout>

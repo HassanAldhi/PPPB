@@ -1,71 +1,93 @@
 package com.example.pertemuan2_layout
 
+
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.pertemuan2_layout.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivityLifecycle"
+class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private lateinit var binding: ActivityMainBinding
-    companion object {
-        const val EXTRA_NAME = "extra_name";
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with (binding) {
-            btnToSecond.setOnClickListener {
-                val intentToSecondActivity =
-                    Intent(
-                        this@MainActivity,
-                        SecondActivity::class.java
-                    )
-                val name = inpName.text.toString()
-                intentToSecondActivity.putExtra(EXTRA_NAME, name)
-                startActivity(intentToSecondActivity)
+        val provinsi = arrayOf(
+            "jawa timur",
+            "jawa tengah",
+            "DIY"
+        )
+
+        with(binding) {
+
+            btnShowCalender.setOnClickListener{
+                val datePicker = DatePicker()
+                datePicker.show(supportFragmentManager, "date")
             }
-            btnSendMsg.setOnClickListener {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TEXT, "Test hallo!!")
-                startActivity(Intent.createChooser(intent, "Select an app"))
+
+            timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
+                val selectedTime = "$hourOfDay:$minute"
+                Toast.makeText(
+                    this@MainActivity,
+                    selectedTime, Toast.LENGTH_SHORT
+                ).show()
             }
-            btnDial.setOnClickListener {
-                val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:08237482948")
-                startActivity(intent)
+
+//            tanggal
+            datePicker.init(
+                datePicker.year,
+                datePicker.month,
+                datePicker.dayOfMonth
+            ){_, year, month, dayOfMonth ->
+                val selectedDate = "$dayOfMonth/${month + 1}/$year"
+                Toast.makeText(
+                    this@MainActivity,
+                    selectedDate, Toast.LENGTH_SHORT
+                ).show()
             }
-            btnOpenLink.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse("https://google.com")
-                startActivity(intent)
+
+//            dropdown
+            val adapterProvinsi = ArrayAdapter<String>(
+                this@MainActivity,
+                android.R.layout.simple_spinner_item, provinsi)
+            spinnerProvinsi.adapter = adapterProvinsi
+            val countries = resources.getStringArray(R.array.countries)
+            val adapterCountry = ArrayAdapter<String>(this@MainActivity,
+                android.R.layout.simple_spinner_item, countries)
+            spinnerCountry.adapter=adapterCountry
+
+            spinnerCountry.onItemSelectedListener=
+                object : AdapterView.OnItemSelectedListener{
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View, position: Int, id:Long
+                    ) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            countries[position], Toast.LENGTH_SHORT).show()
+                    }
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+    //                    TODO("Not yet implemented")
+                    }
+                }
             }
-        }
-        Log.d(TAG, "oncreate is called")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onstart is called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onresume is called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onpause is called")
+    override fun onDateSet(p0: android.widget.DatePicker?, p1: Int, p2: Int, p3: Int) {
+        val selectedDate = "$p3/${p2 + 1}/$p1"
+        Toast.makeText(
+            this@MainActivity,
+            selectedDate, Toast.LENGTH_SHORT
+        ).show()
     }
 }
