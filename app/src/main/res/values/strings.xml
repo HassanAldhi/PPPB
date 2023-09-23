@@ -5,6 +5,9 @@
     <string name="count">COUNT</string>
     <string name="phone_name">Samsung</string>
     <string name="result">=</string>
+    <string name="terms">By checking the box you agree to our <font color="#0000FF">Terms</font> and <font color="#0000FF">Conditions</font>.</string>
+    <string name="login">Already have an account ?<font color="#0000FF"> Log In</font></string>
+
     <string-array name="countries">
         <item>Indonesia</item>
         <item>Sunda</item>

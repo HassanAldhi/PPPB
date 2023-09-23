@@ -11,83 +11,41 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import com.example.pertemuan2_layout.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val newSession = false
+    companion object {
+        const val EXTRA_NAME = "extra_name";
+        const val EXTRA_MAIL = "extra_mail";
+        const val EXTRA_PHONE = "extra_phone";
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val provinsi = arrayOf(
-            "jawa timur",
-            "jawa tengah",
-            "DIY"
-        )
-
         with(binding) {
 
-            btnShowCalender.setOnClickListener{
-                val datePicker = DatePicker()
-                datePicker.show(supportFragmentManager, "datePicker")
+            btnRegister.setOnClickListener {
+                val intentToSecondActivity =
+                    Intent(
+                        this@MainActivity,
+                        SecondActivity::class.java
+                    )
+                val name = edtUsername.text.toString()
+                val mail = edtEmail.text.toString()
+                val phone = edtPhone.text.toString()
+                intentToSecondActivity.putExtra(EXTRA_NAME, name)
+                intentToSecondActivity.putExtra(EXTRA_MAIL, mail)
+                intentToSecondActivity.putExtra(EXTRA_PHONE, phone)
+                startActivity(intentToSecondActivity)
             }
-
-            timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
-                val selectedTime = "$hourOfDay:$minute"
-                Toast.makeText(
-                    this@MainActivity,
-                    selectedTime, Toast.LENGTH_SHORT
-                ).show()
-            }
-
-//            tanggal
-            datePicker.init(
-                datePicker.year,
-                datePicker.month,
-                datePicker.dayOfMonth
-            ){_, year, month, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${month + 1}/$year"
-                Toast.makeText(
-                    this@MainActivity,
-                    selectedDate, Toast.LENGTH_SHORT
-                ).show()
-            }
-
-//            dropdown
-            val adapterProvinsi = ArrayAdapter<String>(
-                this@MainActivity,
-                android.R.layout.simple_spinner_item, provinsi)
-            spinnerProvinsi.adapter = adapterProvinsi
-            val countries = resources.getStringArray(R.array.countries)
-            val adapterCountry = ArrayAdapter<String>(this@MainActivity,
-                android.R.layout.simple_spinner_item, countries)
-            spinnerCountry.adapter=adapterCountry
-
-            spinnerCountry.onItemSelectedListener=
-                object : AdapterView.OnItemSelectedListener{
-                    override fun onItemSelected(
-                        parent: AdapterView<*>,
-                        view: View, position: Int, id:Long
-                    ) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            countries[position], Toast.LENGTH_SHORT).show()
-                    }
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-    //                    TODO("Not yet implemented")
-                    }
-                }
-            }
-    }
-
-    override fun onDateSet(p0: android.widget.DatePicker?, p1: Int, p2: Int, p3: Int) {
-        val selectedDate = "$p3/${p2 + 1}/$p1"
-        Toast.makeText(
-            this@MainActivity,
-            selectedDate, Toast.LENGTH_SHORT
-        ).show()
+        }
     }
 }
