@@ -1,16 +1,21 @@
 <resources>
-    <string name="app_name">pertemuan 2 - Layout</string>
-    <string name="toast">TOAST</string>
-    <string name="_0">0</string>
-    <string name="count">COUNT</string>
-    <string name="phone_name">Samsung</string>
+    <string name="app_name">TravelApp</string>
     <string name="result">=</string>
-    <string name="terms">By checking the box you agree to our <font color="#0000FF">Terms</font> and <font color="#0000FF">Conditions</font>.</string>
-    <string name="login">Already have an account ?<font color="#0000FF"> Log In</font></string>
+    <string name="terms">Setuju dengan <font color="#20C3AF">Persyaratan</font> dan <font color="#20C3AF">Ketentuan</font>.</string>
+    <string name="login">Sudah punya akun?<font color="#20C3AF"> Log In</font></string>
+    <string name="register">Belum punya akun?<font color="#20C3AF"> Register</font></string>
 
-    <string-array name="countries">
-        <item>Indonesia</item>
-        <item>Sunda</item>
-        <item>US</item>
+    <string-array name="kotaAsal">
+        <item>Yogyakarta</item>
+        <item>Magelang</item>
+        <item>Solo</item>
     </string-array>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
 </resources>
