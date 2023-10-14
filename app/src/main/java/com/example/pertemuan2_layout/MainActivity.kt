@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(){
                     Toast.makeText(this@MainActivity,
                         "Umur tidak mencukupi (kurang dari 15 tahun)",
                         Toast.LENGTH_SHORT).show()
-                } else if (name == null || mail == null || password == null || birth == null ){
+                } else if (name.isEmpty() || mail.isEmpty() || password.isEmpty() || birth.isEmpty() ){
                     Toast.makeText(this@MainActivity,
                         "Informasi anda belum terisi lengkap",
                         Toast.LENGTH_SHORT).show()

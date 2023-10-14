@@ -1,5 +1,6 @@
 package com.example.pertemuan2_layout
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -139,8 +140,8 @@ class PlanActivity : AppCompatActivity() {
             // Spinner Stasiun Tujuan
             val adapterStasiunTujuan = ArrayAdapter<String>(this@PlanActivity,
                 android.R.layout.simple_spinner_item, stasiunTujuan)
-            spinnerStasiunAsal.adapter = adapterStasiunAsal
-            spinnerStasiunAsal.onItemSelectedListener =
+            spinnerStasiunTujuan.adapter = adapterStasiunTujuan
+            spinnerStasiunTujuan.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
@@ -210,29 +211,20 @@ class PlanActivity : AppCompatActivity() {
                 }
             }
 
-            if (selectedStasiunTujuan == null || selectedKotaTujuan == null || selectedKotaAsal == null
-                || selectedStasiunAsal == null || selectedKelas == null || selectedTanggal == null ){
-                Toast.makeText(this@PlanActivity,
-                    "Informasi anda belum terisi lengkap",
-                    Toast.LENGTH_SHORT).show()
-            } else {
-                // Pindah ke aktivitas dashboard
-                val content = true
-                tanggalRencana.add(selectedTanggal)
-                val totalHargaString = totalHarga.toString()
-                val intentToDashboardActivity = Intent(this@PlanActivity, DashboardActivity::class.java)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_TANGGAL, selectedTanggal)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_KOTA_ASAL, selectedKotaAsal)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_KOTA_TUJUAN, selectedKotaTujuan)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_STASIUN_ASAL, selectedStasiunAsal)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_STASIUN_TUJUAN, selectedStasiunTujuan)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_KELAS, selectedKelas)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_TANGGAL, selectedTanggal)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_HARGA, totalHargaString)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_PAKET, paket)
-                intentToDashboardActivity.putExtra(PlanActivity.EXTRA_CONTENT, content)
-                intentToDashboardActivity.putStringArrayListExtra("TANGGAL_RENCANA", ArrayList(tanggalRencana))
-                startActivity(intentToDashboardActivity)
+            btnBuatRencana.setOnClickListener {
+                val intent = Intent()
+                var getHarga = totalHarga.text
+                intent.putExtra(PlanActivity.EXTRA_TANGGAL, selectedTanggal)
+                intent.putExtra(PlanActivity.EXTRA_KOTA_ASAL, selectedKotaAsal)
+                intent.putExtra(PlanActivity.EXTRA_KOTA_TUJUAN, selectedKotaTujuan)
+                intent.putExtra(PlanActivity.EXTRA_STASIUN_ASAL, selectedStasiunAsal)
+                intent.putExtra(PlanActivity.EXTRA_STASIUN_TUJUAN, selectedStasiunTujuan)
+                intent.putExtra(PlanActivity.EXTRA_KELAS, selectedKelas)
+                intent.putExtra(PlanActivity.EXTRA_TANGGAL, selectedTanggal)
+                intent.putExtra(PlanActivity.EXTRA_HARGA, getHarga)
+                intent.putExtra(PlanActivity.EXTRA_PAKET, paket)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
             }
         }
     }

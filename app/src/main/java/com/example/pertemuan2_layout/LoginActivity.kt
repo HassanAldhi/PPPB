@@ -11,6 +11,9 @@ import com.example.pertemuan2_layout.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    companion object {
+        const val EXTRA_NAME = "extra_name"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +30,16 @@ class LoginActivity : AppCompatActivity() {
                 val getname = edtEmailorUsername.text.toString()
                 val getpassword = edtPasswd.text.toString()
 
-                if (getname == name || getname == mail){
+                if (getname == name || getname == mail && getpassword == password){
                     val intentToDashboardActivity =
                         Intent(this@LoginActivity,
                         DashboardActivity::class.java)
+                    intentToDashboardActivity.putExtra(MainActivity.EXTRA_NAME, name)
                     startActivity(intentToDashboardActivity)
                 }else{
-                    Toast.makeText(this@LoginActivity, "Username atau password salah", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity,
+                        "Username atau password salah",
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         }
