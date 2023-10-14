@@ -99,6 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_jadwal"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,8 +108,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="Anda belum memiliki rencana perjalanan"
+                    android:text="Berangkat pada"
                     android:textColor="@color/dark_gray"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@id/ic_jadwal"
                     app:layout_constraintStart_toEndOf="@id/ic_jadwal"
                     app:layout_constraintTop_toTopOf="@id/ic_jadwal" />
@@ -135,6 +137,7 @@
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ic_jadwal" />
 
@@ -146,6 +149,7 @@
                     android:text="Yogyakarta"
                     android:textColor="@color/dark_gray"
                     android:textSize="13sp"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/stasiun_asal" />
 
@@ -155,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="Menuju"
                     android:textColor="@color/green"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@id/kota_asal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -169,6 +174,7 @@
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ic_jadwal" />
 
@@ -180,6 +186,7 @@
                     android:text="Jakarta"
                     android:textColor="@color/dark_gray"
                     android:textSize="13sp"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/stasiun_tujuan" />
 
@@ -189,30 +196,62 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:background="@drawable/img_rute"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/kota_asal" />
+
+                <TextView
+                    android:id="@+id/kelas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Economy"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:background="#D5F4F0"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rute_bar" />
+
 
                 <TextView
                     android:id="@+id/header_paket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="8sp"
                     android:text="Paket"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rute_bar" />
+                    app:layout_constraintTop_toBottomOf="@id/kelas" />
 
                 <TextView
+                    android:id="@+id/paket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Makan siang, Dekat jendela, Toilet VIP"
                     android:textColor="@color/dark_gray"
                     android:textSize="13sp"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/header_paket" />
+
+                <ImageView
+                    android:id="@+id/bg_noData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_no_data"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
@@ -225,8 +264,7 @@
                 android:backgroundTint="@color/green"
                 android:text="+ Tambah Rencana"
                 android:textAllCaps="false"
-                android:textSize="18dp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/kartu_rencana" />
 
             <TextView

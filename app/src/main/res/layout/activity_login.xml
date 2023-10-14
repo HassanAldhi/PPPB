@@ -84,8 +84,7 @@
         android:layout_marginBottom="18dp"
         android:text="Login"
         android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="16sp"
         android:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@id/txt_register"/>
 

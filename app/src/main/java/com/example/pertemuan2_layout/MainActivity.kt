@@ -13,11 +13,10 @@ import java.util.concurrent.TimeUnit
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     companion object {
-        const val EXTRA_NAME = "extra_name";
-        const val EXTRA_MAIL = "extra_mail";
-        const val EXTRA_PASSWORD = "extra_password";
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_MAIL = "extra_mail"
+        const val EXTRA_PASSWORD = "extra_password"
     }
-
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,8 +60,13 @@ class MainActivity : AppCompatActivity(){
                 // Cek umur
                 val minimumAgeInDays = 15 * 365 // Minimum umur 15 tahun dalam hari
                 if (ageInDays < minimumAgeInDays) {
-                    // Tampilkan toast umur tidak cukup
-                    Toast.makeText(this@MainActivity, "Umur tidak mencukupi (kurang dari 15 tahun)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity,
+                        "Umur tidak mencukupi (kurang dari 15 tahun)",
+                        Toast.LENGTH_SHORT).show()
+                } else if (name == null || mail == null || password == null || birth == null ){
+                    Toast.makeText(this@MainActivity,
+                        "Informasi anda belum terisi lengkap",
+                        Toast.LENGTH_SHORT).show()
                 } else {
                     // Pindah ke aktivitas login
                     val intentToLoginActivity = Intent(this@MainActivity, LoginActivity::class.java)

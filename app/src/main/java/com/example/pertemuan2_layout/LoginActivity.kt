@@ -11,16 +11,18 @@ import com.example.pertemuan2_layout.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    val name = intent.getStringExtra(EXTRA_NAME)?: ""
-    val mail = intent.getStringExtra(EXTRA_MAIL)?: ""
-    val password = intent.getStringExtra(EXTRA_PASSWORD)?: ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with (binding) {
+        val name = intent.getStringExtra(EXTRA_NAME)?: ""
+        val mail = intent.getStringExtra(EXTRA_MAIL)?: ""
+        val password = intent.getStringExtra(EXTRA_PASSWORD)?: ""
+
+        with(binding) {
             btnLogin.setOnClickListener {
                 val getname = edtEmailorUsername.text.toString()
                 val getpassword = edtPasswd.text.toString()
