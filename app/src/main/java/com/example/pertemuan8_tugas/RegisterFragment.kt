@@ -30,7 +30,9 @@ class RegisterFragment : Fragment() {
             (activity as MainActivity).viewPager2.currentItem = 1
             showToast("Registration Successful")
         }
-
+        binding.txtLogin.setOnClickListener{
+            (activity as MainActivity).viewPager2.setCurrentItem(1)
+        }
         return view
     }
 

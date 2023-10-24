@@ -20,10 +20,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // Add your login logic here
         binding.btnLogin.setOnClickListener {
-            // Implement your login logic here
-            // For example, check credentials from SharedPreferences
             val sharedPreferences =
                 activity?.getSharedPreferences("UserData", Context.MODE_PRIVATE)
             val savedUsername = sharedPreferences?.getString("username", "")
@@ -32,15 +29,17 @@ class LoginFragment : Fragment() {
             if (binding.edtUsername.text.toString() == savedUsername &&
                 binding.edtPassword.text.toString() == savedPassword
             ) {
-                // Login successful, start the dashboard activity
+                // Login successful, start dashboard activity
                 val intent = Intent(requireContext(), DashboardActivity::class.java)
                 showToast("Login successful!")
                 startActivity(intent)
-                // Optionally, you can finish the current activity if needed
-//                activity?.finish()
             } else {
                 showToast("Wrong username or password")
             }
+        }
+
+        binding.txtRegister.setOnClickListener{
+            (activity as MainActivity).viewPager2.setCurrentItem(0)
         }
 
         return view
