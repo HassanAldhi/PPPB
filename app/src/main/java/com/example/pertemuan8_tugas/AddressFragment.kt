@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.pertemuan8_tugas.databinding.FragmentHomeBinding
+import com.example.pertemuan8_tugas.databinding.FragmentAddressBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,27 +15,29 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [AddressFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
-    private var _binding:FragmentHomeBinding? = null
-    private val binding get()= _binding!!
-       override fun onCreateView(
+class AddressFragment : Fragment() {
+    private lateinit var binding : FragmentAddressBinding
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentAddressBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-            val action = HomeFragmentDirections.actionHomeFragmentToCheckoutFragment(txtProduct.text.toString())
-            btnBuy.setOnClickListener {
-                findNavController().navigate(action)
+            btnDone.setOnClickListener{
+                findNavController().apply{
+                    previousBackStackEntry?.
+                            savedStateHandle?.
+                            set("address", addressEdt.text.toString())
+                }.navigateUp()
             }
         }
     }
