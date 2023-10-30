@@ -8,29 +8,30 @@
     android:orientation="vertical"
     android:background="#F4F4F4">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_profile"
-        android:layout_marginBottom="32dp"/>
-
     <TextView
-        android:id="@+id/txt_Nama"
+        android:id="@+id/txt_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="32sp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:textStyle="bold"
-        android:text="Hassan Aldhi"
+        android:text="Order Ticket"
         />
-    <TextView
-        android:id="@+id/txt_nim"
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"
-        android:text="22/494490/SV/20845"
-        />
+        android:src="@drawable/img_ticket"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_buy"
+        android:paddingHorizontal="64dp"
+        android:paddingVertical="16dp"
+        android:backgroundTint="#525BFF"
+        android:text="Beli Ticket"/>
 
 </LinearLayout>

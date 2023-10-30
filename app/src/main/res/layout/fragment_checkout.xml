@@ -5,31 +5,42 @@
     android:layout_height="match_parent"
     tools:context=".CheckoutFragment"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="48dp"
+    android:background="#F4F4F4">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/txt_product_name"
-        android:layout_width="match_parent"
+        android:id="@+id/txt_header"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textSize="16dp"
-        android:text="Nama Produk" />
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="32dp"
+        android:textStyle="bold"
+        android:text="Buy Ticket"
+        />
+
     <EditText
-        android:id="@+id/edt_address"
+        android:id="@+id/edt_ticket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:hint="Alamat"
-        android:inputType="textPostalAddress"
+        android:layout_height="56dp"
+        android:layout_marginBottom="24dp"
+        android:hint="Jenis Ticket"
+        android:background="#EDEDED"
+        android:paddingHorizontal="20dp"
         android:clickable="false"
         android:longClickable="false"
         android:textIsSelectable="false"
         />
+
     <Button
-        android:id="@+id/btn_done"
+        android:id="@+id/btn_buy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="selesai"/>
+        android:paddingHorizontal="64dp"
+        android:paddingVertical="16dp"
+        android:backgroundTint="#525BFF"
+        android:text="Buy Ticket"/>
 
 </LinearLayout>

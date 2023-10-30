@@ -33,24 +33,23 @@ class CheckoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-            val args : CheckoutFragmentArgs by navArgs()
-            txtProductName.setText(args.productName)
+//            val args : CheckoutFragmentArgs by navArgs()
 
-            edtAddress.setOnClickListener{
-                val action =  CheckoutFragmentDirections.actionCheckoutFragmentToAddressFragment()
+            edtTicket.setOnClickListener{
+                val action =  CheckoutFragmentDirections.actionCheckoutFragmentToTypeFragment()
                 findNavController().navigate(action)
             }
 
             findNavController().currentBackStackEntry?.
                     savedStateHandle?.let{
-                        handle -> handle.getLiveData<String>("address")
+                        handle -> handle.getLiveData<String>("ticket")
                 .observe(viewLifecycleOwner) {
                     res ->
-                    edtAddress.setText(res)
+                    edtTicket.setText(res)
                 }
             }
 
-            btnDone.setOnClickListener {
+            btnBuy.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
