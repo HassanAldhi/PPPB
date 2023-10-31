@@ -30,6 +30,7 @@
         android:background="#EDEDED"
         android:paddingHorizontal="20dp"
         android:clickable="false"
+        android:focusable="false"
         android:longClickable="false"
         android:textIsSelectable="false"
         />
