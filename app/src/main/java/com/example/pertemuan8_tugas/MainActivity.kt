@@ -16,12 +16,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapterRestaurant = RestaurantAdapter()
+        val adapterRestaurant = RestaurantAdapter(generateRestaurants())
         with(binding){
             rvRestaurants.apply{
                 adapter = adapterRestaurant
                 layoutManager = LinearLayoutManager(this@MainActivity)
             }
         }
+    }
+    fun generateRestaurants() : List<Restaurant>{
+        return listOf(
+            Restaurant(name="McDonalds", type = "Western"),
+            Restaurant(name="Bornga", type = "Korean"),
+            Restaurant(name="Sushi Tei", type = "Japanese"),
+            Restaurant(name="Mas Kobis", type = "Javanese"),
+            Restaurant(name="Leko", type = "Indonesian")
+        )
     }
 }
