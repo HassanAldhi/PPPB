@@ -2,6 +2,7 @@ package com.example.pertemuan8_tugas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapterRestaurant = RestaurantAdapter(generateRestaurants())
+        val adapterRestaurant = RestaurantAdapter(generateRestaurants()){
+            restaurant -> Toast.makeText(this@MainActivity, "Hei! You clicked on ${restaurant.name}",
+            Toast.LENGTH_SHORT).show()
+        }
         with(binding){
             rvRestaurants.apply{
                 adapter = adapterRestaurant

@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pertemuan8_tugas.databinding.ItemRestaurantBinding
 
-class RestaurantAdapter(private val listRestaurant : List<Restaurant>)
+typealias OnClickRestaurant = (Restaurant) -> Unit
+class RestaurantAdapter(private val listRestaurant : List<Restaurant>,
+    private val onClickRestaurant: OnClickRestaurant)
     : RecyclerView.Adapter<RestaurantAdapter.itemRestaurantViewHolder>() {
 
     inner class itemRestaurantViewHolder(private val
@@ -15,6 +17,10 @@ class RestaurantAdapter(private val listRestaurant : List<Restaurant>)
                 with(binding){
                     restoNameTxt.text = data.name
                     restoTypeTxt.text = data.type
+
+                    itemView.setOnClickListener{
+                        onClickRestaurant(data)
+                    }
                 }
             }
         }
