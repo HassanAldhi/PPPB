@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentActivity"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="#525BFF"
+        android:layout_marginBottom="64dp">
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/baseline_arrow_back_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/student_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_budi"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student name"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="6dp"/>
+    <TextView
+        android:id="@+id/prodi_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Software Engineering"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="6dp"/>
+    <TextView
+        android:id="@+id/nim_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:text="22/XXXXX/SV/XXXXX"
+        android:layout_marginBottom="6dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/gpa_title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@id/gpa_txt"
+            android:text="GPA : "
+            app:layout_constraintBottom_toBottomOf="@id/gpa_txt"
+            app:layout_constraintTop_toTopOf="@id/gpa_txt"/>
+        <TextView
+            android:id="@+id/gpa_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="3.5"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#128200"
+            android:background="#EAFFE7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="24dp"
+        android:text="Study Result"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:background="@drawable/study_result"
+        android:layout_gravity="center"
+        margin android:layout_marginTop="6dp"/>
+
+</LinearLayout>
+
