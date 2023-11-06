@@ -27,6 +27,9 @@ class StudentActivity : AppCompatActivity() {
             if (studentGpa < 3.0) {
                 gpaTxt.setTextColor(resources.getColor(R.color.colorOrangeDark))
                 gpaTxt.setBackgroundColor(resources.getColor(R.color.colorOrangeLight))
+            } else if (studentGpa < 3.5) {
+                gpaTxt.setTextColor(resources.getColor(R.color.colorBlue))
+                gpaTxt.setBackgroundColor(resources.getColor(R.color.colorBlueLight))
             }
 
             btnBack.setOnClickListener(){

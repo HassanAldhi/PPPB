@@ -29,7 +29,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_restaurants"
+        android:id="@+id/rv_student"
         android:paddingHorizontal="24dp"
         />
 

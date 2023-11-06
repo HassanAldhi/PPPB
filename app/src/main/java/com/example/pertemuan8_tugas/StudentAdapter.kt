@@ -26,6 +26,9 @@ class StudentAdapter(private val listStudent : List<Student>,
                     if (data.gpa < 3.0) {
                         gpaTxt.setTextColor(itemView.context.getColor(R.color.colorOrangeDark))
                         gpaTxt.setBackgroundColor(itemView.context.getColor(R.color.colorOrangeLight))
+                    }else if (data.gpa < 3.5) {
+                        gpaTxt.setTextColor(itemView.context.getColor(R.color.colorBlue))
+                        gpaTxt.setBackgroundColor(itemView.context.getColor(R.color.colorBlueLight))
                     }
 
                     itemView.setOnClickListener{

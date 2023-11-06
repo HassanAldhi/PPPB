@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT).show()
         }
         with(binding){
-            rvRestaurants.apply{
+            rvStudent.apply{
                 adapter = adapterStudent
                 layoutManager = LinearLayoutManager(this@MainActivity)
                     // GridLayoutManager(this@MainActivity, 2)
