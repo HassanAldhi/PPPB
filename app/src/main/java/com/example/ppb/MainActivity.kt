@@ -1,49 +1,96 @@
 package com.example.ppb
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.example.ppb.databinding.ActivityMainBinding
-import com.example.ppb.model.User
-import com.example.ppb.model.UserData
-import com.example.ppb.network.ApiClient
-import retrofit2.Call
-import retrofit2.Response
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
-    val binding by lazy { // dijalankan oleh sistem ketika dipanggil
-        ActivityMainBinding.inflate(layoutInflater)
-    }
+    private lateinit var mNotesDao : NoteDao
+    private lateinit var executorService: ExecutorService
+    private var updateId : Int = 0
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val client = ApiClient.getInstance()
-        val response = client.getAllUsers(50)
+        executorService = Executors.newSingleThreadExecutor()
 
-        response.enqueue(object: retrofit2.Callback<UserData> {
+        val db = NoteRoomDatabase.getDatabase(this)
+        mNotesDao = db!!.noteDao()!!
 
-            override fun onResponse(call: Call<UserData>, response: Response<UserData>) {
-                val userList = ArrayList<User>()
-                for (user in response.body()?.data ?: arrayListOf()) {
-                    userList.add(user)
-                }
-                val listAdapter = UserAdapter(userList) {
-                        user ->
-                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("USER_DATA", user)
-                    startActivity(intent)
-                }
-                binding.rvContent.apply {
-                    adapter = listAdapter
-                    layoutManager = LinearLayoutManager(this@MainActivity)
-                }
+        with(binding){
+            btnAdd.setOnClickListener{
+                insert(Note(title = edtTitle.text.toString(),
+                    description = edtDesc.text.toString()))
+                setEmptyField()
             }
-
-            override fun onFailure(call: Call<UserData>, t: Throwable) {
-//                TODO("Not yet implemented")
+            
+            listView.setOnItemClickListener{
+                adapterView, _, i, _ ->
+                val item = adapterView.adapter.getItem(i) as Note
+                updateId = item.id
+                edtTitle.setText(item.title)
+                edtDesc.setText(item.description)
             }
+            
+            btnUpdate.setOnClickListener{
+                update(Note(
+                    id = updateId,
+                    title = edtTitle.text.toString(),
+                    description = edtDesc.text.toString()))
+                
+                updateId = 0
+                setEmptyField()
+            }
+            
+            listView.onItemLongClickListener =
+                AdapterView.OnItemLongClickListener(){
+                    adapterView, view, i, l ->
+                    val item = adapterView.adapter.getItem(i) as Note
+                    delete(item)
+                    true
+                }
+        }
+    }
 
-        })
+    override fun onResume(){
+        super.onResume()
+        getAllNotes()
+    }
+
+    private fun getAllNotes() {
+        mNotesDao.allNotes.observe(this){
+            notes ->
+            val adapter : ArrayAdapter<Note> =
+                ArrayAdapter<Note>(this,
+                    android.R.layout.simple_list_item_1,
+                    notes)
+            binding.listView.adapter = adapter
+        }
+    }
+
+    private fun insert(note : Note){
+        executorService.execute{ mNotesDao.insert(note) }
+    }
+
+    private fun update(note : Note){
+        executorService.execute{ mNotesDao.update(note) }
+    }
+
+    private fun delete(note : Note){
+        executorService.execute{ mNotesDao.delete(note) }
+    }
+
+    private fun setEmptyField(){
+        with(binding){
+            edtTitle.setText("")
+            edtDesc.setText("")
+        }
     }
 }

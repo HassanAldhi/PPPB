@@ -6,32 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:gravity="center"
     android:orientation="vertical"
-    android:background="#F1F2F8">
+    android:background="#F1F2F8"
+    android:padding="24dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <EditText
+        android:id="@+id/edt_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:background="#525BFF"
-        android:layout_marginBottom="24dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="People Nearby"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="56dp"
+        android:hint="Title"/>
+    <EditText
+        android:id="@+id/edt_desc"
         android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Description"
+        android:inputType="textMultiLine"/>
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_content"
-        android:paddingHorizontal="24dp"
-        />
+        android:textAllCaps="false"
+        android:text="Tambah Data"/>
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Update Data"/>
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
 
