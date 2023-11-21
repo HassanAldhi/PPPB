@@ -2,14 +2,14 @@
     <!-- Base application theme. -->
     <style name="Theme.PPB" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#525BFF</item>
-        <item name="colorPrimaryVariant">#525BFF</item>
+        <item name="colorPrimary">@color/card_green</item>
+        <item name="colorPrimaryVariant">@color/card_green</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#525BFF</item>
         <item name="colorSecondaryVariant">#525BFF</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="android:statusBarColor">#525BFF</item>
+        <item name="android:statusBarColor">#F2F2F2</item>
     </style>
 
     <style name="Theme.PPB.NoActionBar" parent="Theme.MaterialComponents.DayNight">

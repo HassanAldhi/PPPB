@@ -1,17 +1,20 @@
 package com.example.ppb
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ppb.databinding.ItemContactBinding
 import java.util.concurrent.ExecutorService
 
 
-typealias OnClickContact = (Note) -> Unit
-class ContactAdapter(private val listContact : List<Note>,
+typealias OnClickContact = (Contact) -> Unit
+class ContactAdapter(private val listContact : List<Contact>,
                      private val onClickContact: OnClickContact,
-                     private val mNotesDao: NoteDao,
+                     private val mContactDao: ContactDao,
                      private val executorService: ExecutorService
 )
     : RecyclerView.Adapter<ContactAdapter.itemContactViewHolder>() {
@@ -19,21 +22,28 @@ class ContactAdapter(private val listContact : List<Note>,
 
     inner class itemContactViewHolder(private val binding: ItemContactBinding ):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(data : Note){
+        fun bind(data : Contact){
             val id = data.id
-                with(binding){
-                contactNameTxt.text = data.title
-                contactNumberTxt.text = data.description
+            val name = data.name
+            val number = data.number
+            with(binding){
+                contactNameTxt.text = name
+                contactNumberTxt.text = number
 
-                    itemView.setOnClickListener{
-                        onClickContact(data)
+                itemView.setOnClickListener{
+                    onClickContact(data)
+                    val intent = Intent(itemView.context, EditActivity::class.java)
+                    intent.putExtra("contact_id", id)
+                    intent.putExtra("contact_name", name)
+                    intent.putExtra("contact_number", number)
+                    itemView.context.startActivity(intent)
 
-                    }
+                }
 
-                    itemView.setOnLongClickListener {
-                        delete(id)
-                        true // Return true to indicate the event is consumed
-                    }
+                itemView.setOnLongClickListener {
+                    showDeleteConfirmationDialog(itemView.context, id, name)
+                    true // Return true to indicate the event is consumed
+                }
                 }
             }
         }
@@ -50,15 +60,22 @@ class ContactAdapter(private val listContact : List<Note>,
     }
     private fun delete(id: Int) {
         executorService.execute {
-            mNotesDao.delete(id)
+            mContactDao.delete(id)
         }
     }
 
     override fun onBindViewHolder(holder: itemContactViewHolder, position: Int) {
         holder.bind(listContact[position])
     }
-    fun getList(): List<Note> {
-        return listContact
+    private fun showDeleteConfirmationDialog(context: Context, id: Int, name: String) {
+        AlertDialog.Builder(context)
+            .setTitle("Hapus Kontak")
+            .setMessage("Apa anda ingin menghapus kontak ${name}?")
+            .setPositiveButton("Hapus") { _, _ ->
+                delete(id)
+            }
+            .setNegativeButton("Batal", null)
+            .show()
     }
 }
 
