@@ -30,7 +30,7 @@
     <style name="Theme.Sinau.NoActionBar" parent="Theme.PPB.NoActionBar"/>
 
     <style name="CustomRoundedButton" parent="Widget.AppCompat.Button">
-        <item name="background">@drawable/rounded_button</item>
+        <item name="background">@drawable/rounded_container</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="CustomTextViewLargeBold" parent="Widget.AppCompat.TextView">

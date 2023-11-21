@@ -5,13 +5,15 @@ import android.os.Bundle
 
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ppb.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var mNotesDao : NoteDao
-    private lateinit var executorService: ExecutorService
+class  MainActivity : AppCompatActivity() {
+    lateinit var mNotesDao : NoteDao
+    lateinit var executorService: ExecutorService
     private var updateId : Int = 0
     private lateinit var binding : ActivityMainBinding
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                     description = edtDesc.text.toString()))
                 setEmptyField()
             }
-            
+
             listView.setOnItemClickListener{
                 adapterView, _, i, _ ->
                 val item = adapterView.adapter.getItem(i) as Note
@@ -38,24 +40,25 @@ class MainActivity : AppCompatActivity() {
                 edtTitle.setText(item.title)
                 edtDesc.setText(item.description)
             }
-            
+
             btnUpdate.setOnClickListener{
                 update(Note(
                     id = updateId,
                     title = edtTitle.text.toString(),
                     description = edtDesc.text.toString()))
-                
+
                 updateId = 0
                 setEmptyField()
             }
-            
-            listView.onItemLongClickListener =
-                AdapterView.OnItemLongClickListener(){
-                    adapterView, view, i, l ->
-                    val item = adapterView.adapter.getItem(i) as Note
-                    delete(item)
-                    true
-                }
+//
+//            listView.onItemLongClickListener =
+//                AdapterView.OnItemLongClickListener(){
+//                    adapterView, view, i, l ->
+//                    val item = adapterView.adapter.getItem(i) as Note
+//                    delete(item)
+//                    true
+//                }
+
         }
     }
 
@@ -72,6 +75,20 @@ class MainActivity : AppCompatActivity() {
                     android.R.layout.simple_list_item_1,
                     notes)
             binding.listView.adapter = adapter
+
+            val adapterContact = ContactAdapter(
+                notes,
+                onClickContact = { note ->
+                    Toast.makeText(this@MainActivity, "Hey you clicked ${note.title}", Toast.LENGTH_SHORT).show()
+                    updateId = note.id
+                    binding.edtTitle.setText(note.title)
+                    binding.edtDesc.setText(note.description)
+                },
+                mNotesDao = mNotesDao,
+                executorService = executorService
+            )
+            binding.rvContact.adapter = adapterContact
+            binding.rvContact.layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
 
@@ -83,8 +100,10 @@ class MainActivity : AppCompatActivity() {
         executorService.execute{ mNotesDao.update(note) }
     }
 
-    private fun delete(note : Note){
-        executorService.execute{ mNotesDao.delete(note) }
+    private fun delete(id: Int) {
+        executorService.execute {
+            mNotesDao.delete(id)
+        }
     }
 
     private fun setEmptyField(){
