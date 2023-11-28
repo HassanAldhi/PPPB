@@ -1,0 +1,41 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ContactAdapter"
+    android:background="@drawable/rounded_container"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="16dp"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/icon_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_profile_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/contact_name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bambang"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/icon_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="24dp"/>
+
+    <TextView
+        android:id="@+id/contact_number_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+6285623312"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/icon_profile"
+        app:layout_constraintTop_toBottomOf="@id/contact_name_txt"
+        android:layout_marginLeft="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
